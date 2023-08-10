@@ -1,0 +1,87 @@
+body{
+  background-image: url(/img/phone-day.jpg);
+  
+  -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+
+  -moz-user-select: none;
+    /* поэтому нужны префиксы */
+
+  -ms-user-select: none;
+}
+
+
+.game-name{
+  margin-top: 20px;
+  text-align: center;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-size: 40px;
+  color: blue;
+}
+
+.word {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+  text-align: center;
+  background-color:blue;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+
+.word:hover {
+	background: rgba(0,0,0,0);
+	color: #3a7999;
+	box-shadow: inset 0 0 0 3px #3a7999;
+}
+
+#graph{
+  display: block;
+  margin: 0 auto;
+}
+
+#myWord{
+  text-align: center;
+}
+
+.start {
+  width: 200px;
+  height: 40px;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  background-color:blue;
+  color: #fff;
+}
+
+.start:hover {
+	background: rgba(0,0,0,0);
+	color: #3a7999;
+	box-shadow: inset 0 0 0 3px #3a7999;
+}
+
+.word-alphavite{
+  margin-top: 20px;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#clock{
+  display : block;
+  margin-left : auto;
+  width : 200px;
+  font-size: 40px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  position: fixed;
+  right: 10px;
+  top: 80%;
+}
+#oclock{
+  margin-bottom: 20px;
+}

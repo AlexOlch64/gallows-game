@@ -10,24 +10,28 @@ var canvas = document.getElementById('graph');
 var ctx = canvas.getContext('2d');
 let start = false;
 const addBtn = document.querySelector('.start');
+const gameField = document.querySelector('.word-alphavite');
 addBtn.onclick = () => {
   if (!start) {
     start = true;
     addBtn.textContent = "Закончить игру";
     ctx.lineWidth = 10;
     ctx.beginPath();
-    ctx.moveTo(50, 450);
-    ctx.lineTo(50, 100);
-    ctx.lineTo(450, 100);
+    ctx.moveTo(50, 350);
+    ctx.lineTo(50, 10);
+    ctx.lineTo(450, 10);
     ctx.stroke();
+
     for (let i = 0; i < keyWord.length; i++) {
       const createBlock = document.createElement('div');
       createBlock.className = `page-block${i}`;
       createBlock.innerText = keyWord[i];
-      addBtn.insertAdjacentElement('beforeBegin', createBlock);
+      myWord.append(createBlock);
+      let myWords = document.querySelector('#myWord');
+      myWords.style.cssText = "margin: 15px 0;"
       let elem = document.querySelector(`.page-block${i}`);
-      elem.style.cssText = "border : 1px solid red; width : 30px; height : 30px; display : inline-block; color : white; background-color: white;";
-    }
+      elem.style.cssText = "border-bottom : 5px solid red; margin-right: 5px; font-size:50px; font-family: Andale Mono, monospace; text-align : center; width : 60px; height : 60px; display : inline-block; color : white; background-color: white;";
+    }    
   }
   else {
     start = false;
@@ -51,7 +55,7 @@ document.querySelector('.word-alphavite').onclick = (event) => {
     let index = (getListIdx(keyWord, key));
     for (let i = 0; i < index.length; i++) {
       let elem2 = document.querySelector(`.page-block${index[i]}`);
-      elem2.style.cssText = "border : 1px solid red; width : 30px; height : 30px; display : inline-block; color : black";
+      elem2.style.cssText = "border-bottom : 5px solid red; margin-right: 5px; font-size:50px; font-family: Andale Mono, monospace; text-align:center; width : 60px; height : 60px; display : inline-block; color : black; background-color: white;";
       notError++;
     }
     let right = document.querySelector(`.word${alphavite.indexOf(key)}`);
@@ -70,31 +74,31 @@ document.querySelector('.word-alphavite').onclick = (event) => {
   if (keyWord.indexOf(key) == -1) {
     switch (error) {
       case 0:
-        ctx.moveTo(250, 100);
-        ctx.lineTo(250, 200);
+        ctx.moveTo(250, 10);
+        ctx.lineTo(250, 110);
         break;
       case 1:
-        ctx.arc(250, 220, 20, 4.71, Math.PI * 1.5, true);
+        ctx.arc(250, 130, 20, 4.71, Math.PI * 1.5, true);
         break;
       case 2:
-        ctx.moveTo(250, 240);
-        ctx.lineTo(250, 350);
+        ctx.moveTo(250, 150);
+        ctx.lineTo(250, 260);
         break;
       case 3:
-        ctx.moveTo(250, 270);
-        ctx.lineTo(220, 280);
+        ctx.moveTo(250, 180);
+        ctx.lineTo(220, 190);
         break;
       case 4:
-        ctx.moveTo(250, 270);
-        ctx.lineTo(280, 280);
+        ctx.moveTo(250, 180);
+        ctx.lineTo(280, 190);
         break;
       case 5:
-        ctx.moveTo(250, 350);
-        ctx.lineTo(260, 400);
+        ctx.moveTo(250, 260);
+        ctx.lineTo(260, 310);
         break;
       case 6:
-        ctx.moveTo(250, 350);
-        ctx.lineTo(240, 400);
+        ctx.moveTo(250, 260);
+        ctx.lineTo(240, 310);
         break;
     }
     ctx.stroke();

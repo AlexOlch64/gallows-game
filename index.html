@@ -3,15 +3,19 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style/normalize.css">
+  <link rel="stylesheet" href="/style/style.css">
+  <script src = "/script/clock.js"></script>
   <title>Виселица</title>
 </head>
 
 <body>
-  <div class="start">
-    Начать игру
+  <div class="game-name">
+    Виселица
   </div>
+  <script src = "/script/change-theme.js" ></script>
+  <canvas id="graph" width="500" height="350" ></canvas>
+  <div id="myWord"></div>
   <div class="word-alphavite">
     <div class="word word0">А</div>
     <div class="word word1">Б</div>
@@ -47,10 +51,14 @@
     <div class="word word31">Ю</div>
     <div class="word word32">Я</div>
   </div>
-
-  <canvas id="graph" width="500" height="500"></canvas>
-  <script src="game.js">
-
+  <div class="start">
+    Начать игру
+  </div>
+  <div id="clock">
+    <div id="oclock"></div>
+    <div id="date"></div>
+  </div>
+  <script src="/script/game.js">
   </script>
 </body>
 
