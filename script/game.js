@@ -4,18 +4,21 @@ let massWord = ['Указатель', 'Радуга', 'Мармелад', 'По�
   'Журнал', 'Заставка', 'Тиранозавр', 'Микрофон', 'Прохожий', 'Квитанция', 'Пауза', 'Новости', 'Скарабей', 'Серебро', 'Творог', 'Осадок', 'Песня', 'Корзина', 'Сдача', 'Овчарка', 'Хлопья', 'Телескоп', 'Микроб', 'Угощение', 'Экскаватор', 'Письмо', 'Пришелец', 'Айсберг', 'Пластик', 'Доставка', 'Полка', 'Билет', 'Вторник', 'Льдина', 'Интерес', 'Троллейбус', 'Футболист', 'Лисёнок', 'Пример', 'Баклажан', 'Лягушка', 'Джокер', 'Котлета', 'Накидка', 'Дикобраз', 'Барбарис', 'Работник', 'Кристалл', 'Доспехи', 'Халва', 'Велосипед', 'Крючок', 'Кочка', 'Черепаха', 'Петля', 'Осень', 'Яйцо']
 
 let alphavite = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ъ', 'Ы', 'Ь', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
-
 let keyWord = massWord[Math.floor(Math.random() * massWord.length)].toUpperCase();
 var canvas = document.getElementById('graph');
 var ctx = canvas.getContext('2d');
 let start = false;
 const addBtn = document.querySelector('.start');
 const gameField = document.querySelector('.word-alphavite');
+let gameStart = false;
+let firstClick;//Отслеживаем нажатие кнопки один раз
 addBtn.onclick = () => {
   if (!start) {
+    gameStart = true;
     start = true;
     addBtn.textContent = "Закончить игру";
     ctx.lineWidth = 10;
+    ctx.strokeStyle = 'blue';
     ctx.beginPath();
     ctx.moveTo(50, 350);
     ctx.lineTo(50, 10);
@@ -35,6 +38,7 @@ addBtn.onclick = () => {
   }
   else {
     start = false;
+    gameStart = false;
     location.reload();
   }
 }
@@ -50,7 +54,16 @@ function getListIdx(str, substr) {
 let error = 0;
 let notError = 0;
 document.querySelector('.word-alphavite').onclick = (event) => {
+  if(gameStart == false){
+    return;
+  }
   let key = event.target.textContent;
+  if(key.length>1){
+    return;
+  }
+  if ((document.querySelector(`.word${alphavite.indexOf(key)}`)).hasAttribute('disabled')){
+    return;
+  }
   if (keyWord.indexOf(key) + 1) {
     let index = (getListIdx(keyWord, key));
     for (let i = 0; i < index.length; i++) {
@@ -59,6 +72,9 @@ document.querySelector('.word-alphavite').onclick = (event) => {
       notError++;
     }
     let right = document.querySelector(`.word${alphavite.indexOf(key)}`);
+    firstClick = right;
+    firstClick.setAttribute('disabled', 'disabled');
+    console.log(right);
     right.style.cssText = "background-color: green";
 
     function cancel() {
@@ -104,6 +120,9 @@ document.querySelector('.word-alphavite').onclick = (event) => {
     ctx.stroke();
     error++;
     let notRight = document.querySelector(`.word${alphavite.indexOf(key)}`);
+    firstClick = notRight;
+    firstClick.setAttribute('disabled', 'disabled');
+    console.log(notRight);
     notRight.style.cssText = "background-color: red";
     if (error == 8) {
       alert("Вы проиграли, начните игру заново");

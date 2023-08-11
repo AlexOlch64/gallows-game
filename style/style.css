@@ -1,6 +1,4 @@
 body{
-  background-image: url(/img/phone-day.jpg);
-  
   -webkit-user-select: none;
     /* user-select -- это нестандартное свойство */
 
@@ -8,8 +6,21 @@ body{
     /* поэтому нужны префиксы */
 
   -ms-user-select: none;
+  user-select: none;
+  background-image: url(/img/phone-day.jpg);
 }
 
+.theme {
+  position: fixed;
+  cursor: pointer;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(39,38,40,0.4);
+}
 
 .game-name{
   margin-top: 20px;

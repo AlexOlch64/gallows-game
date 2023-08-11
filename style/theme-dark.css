@@ -1,0 +1,15 @@
+body{
+    background-image: url(/img/phone-night.jpg);
+}
+.theme {
+    background: black;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+#clock{
+    color:white;
+}
+
+.game-name{
+    color: white;
+}
